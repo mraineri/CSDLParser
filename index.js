@@ -1,4 +1,4 @@
-var Metadata = process.env.CSDL_COV ? require('./lib-cov/Metadata') : require('./lib/Metadata');
+var CSDL = process.env.CSDL_COV ? require('./lib-cov/CSDL') : require('./lib/CSDL');
 var CSDLCache = process.env.CSDL_COV ? require('./lib-cov/cache/csdlCache') : require('./lib/cache/csdlCache');
 var CSDLSearch = process.env.CSDL_COV ? require('./lib-cov/CSDLSearch') : require('./lib/CSDLSearch');
 
@@ -6,13 +6,13 @@ var CSDLSearch = process.env.CSDL_COV ? require('./lib-cov/CSDLSearch') : requir
 module.exports.version = require('./package.json').version;
 
 /// parse an XML string and return the CSDL object
-module.exports.parseMetadata = Metadata.parseMetadata;
+module.exports.parseMetadata = CSDL.parseMetadata;
 
 /// parse an XML file and return the CSDL object
-module.exports.parseMetadataFile = Metadata.parseMetadataFile;
+module.exports.parseMetadataFile = CSDL.parseMetadataFile;
 
 /// parse an XML URI and return the CSDL object
-module.exports.parseMetadataUri = Metadata.parseMetadataUri;
+module.exports.parseMetadataUri = CSDL.parseMetadataUri;
 
 /// Allow the caller access to the cache
 module.exports.cache = CSDLCache;

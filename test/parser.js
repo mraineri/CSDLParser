@@ -6,7 +6,7 @@ module.exports.parse = function(assert) {
       console.log(error);
       return;
     }
-    assert.equal(Object.keys(metadata).length, 3);
+    assert.equal(Object.keys(metadata).length, 2);
     var schema = metadata['Microsoft.OData.Service.Sample.TrippinInMemory.Models'];
     assert.notEqual(schema, undefined);
     schemaTest(schema, assert);
