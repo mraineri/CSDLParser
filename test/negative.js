@@ -1,4 +1,3 @@
-const ParserCommon = require('../lib/ParserCommon');
 const Annotation = require('../lib/Annotation');
 const XML = require('libxmljs-mt');
 
@@ -8,26 +7,6 @@ const invalidAnnotationAttribute = '<Annotation Term="Test" BadAttr="Test"></Ann
 const invalidAnnotationBadBool = '<Annotation Term="Test" Bool="Bad"></Annotation>';
 
 module.exports.negative = function(assert) {
-  try {
-    ParserCommon.initEntity(null, 'test');
-    assert.ok(false, 'Did not throw expected unbound error!');
-  }
-  catch(e) {
-    assert.notEqual(e, undefined);
-    assert.equal(e.message, 'Function not bound before call!'); 
-  }
-/*
-  var doc = XML.parseXml(simpleWithText);
-  var root = doc.root();
-  try {
-    ParserCommon.parseEntity(root, 'test', null, null);
-    assert.ok(false, 'Did not throw expected entity type error!');
-  }
-  catch(e) {
-    assert.notEqual(e, undefined);
-    assert.equal(e.message, 'Unknown text element in test! Text = "Text"');
-  }*/
-
   var doc = XML.parseXml(invalidAnnotationElement);
   var root = doc.root();
   let a = new Annotation();
