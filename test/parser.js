@@ -20,7 +20,7 @@ function schemaTest(schema, assert) {
   assert.notEqual(schema.Person, undefined);
   assert.equal(schema.Person.constructor.name, 'EntityType');
   assert.deepEqual(schema.Person.Annotations, {});
-  assert.deepEqual(schema.Person.Properties.UserName, {Name: 'UserName', Annotations: {}, Type: 'Edm.String', Nullable: false});
+  assert.deepEqual(schema.Person.Properties.UserName, {Name: 'UserName', Annotations: {}, Type: 'Edm.String', Nullable: false, IsKey: true});
   assert.deepEqual(schema.Person.Properties.FirstName, {Name: 'FirstName', Annotations: {}, Type: 'Edm.String', Nullable: false});
   assert.deepEqual(schema.Person.Properties.LastName, {Name: 'LastName', Annotations: {}, Type: 'Edm.String'});
   assert.deepEqual(schema.Person.Properties.MiddleName, {Name: 'MiddleName', Annotations: {}, Type: 'Edm.String'});
@@ -38,14 +38,14 @@ function schemaTest(schema, assert) {
   assert.notEqual(schema.Airline, undefined);
   assert.equal(schema.Airline.constructor.name, 'EntityType');
   assert.deepEqual(schema.Airline.Annotations, {});
-  assert.deepEqual(schema.Airline.Properties.AirlineCode, {Name: 'AirlineCode', Annotations: {}, Type: 'Edm.String', Nullable: false});
+  assert.deepEqual(schema.Airline.Properties.AirlineCode, {Name: 'AirlineCode', Annotations: {}, Type: 'Edm.String', Nullable: false, IsKey: true});
   assert.deepEqual(schema.Airline.Properties.Name, {Name: 'Name', Annotations: {}, Type: 'Edm.String'});
 
   assert.notEqual(schema.Airport, undefined);
   assert.equal(schema.Airport.constructor.name, 'EntityType');
   assert.deepEqual(schema.Airport.Annotations, {});
   assert.deepEqual(schema.Airport.Properties.Name, {Name: 'Name', Annotations: {}, Type: 'Edm.String'});
-  assert.deepEqual(schema.Airport.Properties.IcaoCode, {Name: 'IcaoCode', Annotations: {}, Type: 'Edm.String', Nullable: false});
+  assert.deepEqual(schema.Airport.Properties.IcaoCode, {Name: 'IcaoCode', Annotations: {}, Type: 'Edm.String', Nullable: false, IsKey: true});
   assert.deepEqual(schema.Airport.Properties.IataCode, {Name: 'IataCode', Annotations: {}, Type: 'Edm.String'});
   assert.deepEqual(schema.Airport.Properties.Location, {Name: 'Location', Annotations: {}, Type: 'Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation'});
 

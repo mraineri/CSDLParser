@@ -30,36 +30,37 @@ module.exports.negative = function(assert) {
 
   var doc = XML.parseXml(invalidAnnotationElement);
   var root = doc.root();
-  try {
-    var a = new Annotation(root);
+  let a = new Annotation();
+  let log = {trace: function(){}, fatal: function(){}};
+  let promise = a.parse(root, null, log);
+  promise.then(function(annot) {
     assert.ok(false, 'Did not throw expected invalid element error!');
-  }
-  catch(e) {
+  }).catch(function(e) {
     assert.notEqual(e, undefined);
     assert.equal(e.message, 'Unknown element name BadElement');
-  }
+  });
 
   doc = XML.parseXml(invalidAnnotationAttribute);
   root = doc.root();
-  try {
-    var a = new Annotation(root);
+  a = new Annotation();
+  promise = a.parse(root, null, log);
+  promise.then(function(annot) {
     assert.ok(false, 'Did not throw expected invalid attribute error!');
-  }
-  catch(e) {
+  }).catch(function(e) {
     assert.notEqual(e, undefined);
     assert.equal(e.message, 'Unknown attribute name BadAttr');
-  }
+  });
 
   doc = XML.parseXml(invalidAnnotationBadBool);
   root = doc.root();
-  try {
-    var a = new Annotation(root);
+  a = new Annotation();
+  promise = a.parse(root, null, log);
+  promise.then(function(annot) {
     assert.ok(false, 'Did not throw expected invalid attribute error!');
-  }
-  catch(e) {
+  }).catch(function(e) {
     assert.notEqual(e, undefined);
     assert.equal(e.message, 'Unknown value Bad for attribute named Bool');
-  }
+  });
 
   assert.done();
 }
