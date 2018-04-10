@@ -29,14 +29,16 @@ module.exports.construct = function(assert) {
 }
 
 module.exports.hasFile = function(assert) {
+  let log = {};
+  log.trace = log.debug = log.info = log.warn = log.error = log.fatal = function() {};
   var fc = new FileCache([__dirname + '/fixtures/'], false);
   assert.equal(fc.hasFile('http://example.com/SimpleMetadata.xml'), false);
-  var promise = fc.getFile('http://example.com/SimpleMetadata.xml');
+  var promise = fc.getFile('http://example.com/SimpleMetadata.xml', log);
   promise.then(function(data) {
     assert.notEqual(data, undefined);
     assert.equal(fc.hasFile('http://example.com/SimpleMetadata.xml'), true);
   }). catch(function(err) {
-    throw err;
+    assert.notEqual(err, null);
   }); 
 
   assert.done();

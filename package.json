@@ -9,7 +9,7 @@
     "coveralls": "jscoverage lib && CSDL_COV=1 nodeunit --reporter=lcov test | coveralls"
   },
   "engines": { 
-    "node" : ">=4.3.2"
+    "node" : ">=6.3"
   },
   "author": "Patrick Boyd",
   "license": "Apache-2.0",

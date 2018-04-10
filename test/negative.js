@@ -16,7 +16,7 @@ module.exports.negative = function(assert) {
     assert.notEqual(e, undefined);
     assert.equal(e.message, 'Function not bound before call!'); 
   }
-
+/*
   var doc = XML.parseXml(simpleWithText);
   var root = doc.root();
   try {
@@ -26,10 +26,10 @@ module.exports.negative = function(assert) {
   catch(e) {
     assert.notEqual(e, undefined);
     assert.equal(e.message, 'Unknown text element in test! Text = "Text"');
-  }
+  }*/
 
-  doc = XML.parseXml(invalidAnnotationElement);
-  root = doc.root();
+  var doc = XML.parseXml(invalidAnnotationElement);
+  var root = doc.root();
   try {
     var a = new Annotation(root);
     assert.ok(false, 'Did not throw expected invalid element error!');
